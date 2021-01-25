@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { vuexOidcCreateRouterMiddleware } from 'vuex-oidc'
+import store from '@/stores'
 
 Vue.use(Router)
 
-export default new Router({
-  mode: 'hash',
+const router = new Router({
+  mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
@@ -56,7 +58,28 @@ export default new Router({
           path: 'upgrade',
           component: () => import('@/views/dashboard/Upgrade'),
         },
+        {
+          path: '/oidc-callback',
+          name: 'OidcCallback',
+          component: () => import('@/views/OidcCallback.vue'),
+        },
+        // {
+        //   path: '/oidc-popup-callback', // Needs to match popupRedirectUri in you oidcSettings
+        //   name: 'oidcPopupCallback',
+        //   component: OidcPopupCallback
+        // },
+        {
+          path: '/oidc-callback-error', // Needs to match redirect_uri in you oidcSettings
+          name: 'oidcCallbackError',
+          component: () => import('@/views/OidcCallbackError.vue'),
+          meta: {
+            isPublic: true,
+          },
+        },
       ],
     },
   ],
 })
+
+router.beforeEach(vuexOidcCreateRouterMiddleware(store, 'oidcStore'))
+export default router

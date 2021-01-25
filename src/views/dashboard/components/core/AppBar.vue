@@ -145,6 +145,14 @@
             <v-list-item-title v-text="userMenu.title" />
           </app-bar-item>
         </template>
+
+        <app-bar-item
+          :key="logout"
+        >
+          <v-list-item-title @click="signOutOidc">
+            Log out
+          </v-list-item-title>
+        </app-bar-item>
       </v-list>
     </v-menu>
   </v-app-bar>
@@ -155,7 +163,7 @@
   import { VHover, VListItem } from 'vuetify/lib'
 
   // Utilities
-  import { mapState, mapMutations } from 'vuex'
+  import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 
   export default {
     name: 'DashboardCoreAppBar',
@@ -205,15 +213,16 @@
         { title: 'Profile', to: '/pages/user' },
         { title: 'Settings' },
         { divider: true },
-        { title: 'Log out' },
       ],
     }),
 
     computed: {
+      ...mapGetters('oidcStore', ['oidcUser']),
       ...mapState(['drawer']),
     },
 
     methods: {
+      ...mapActions('oidcStore', ['signOutOidc']),
       ...mapMutations({
         setDrawer: 'SET_DRAWER',
       }),
