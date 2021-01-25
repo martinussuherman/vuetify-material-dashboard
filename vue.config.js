@@ -29,5 +29,5 @@ module.exports = {
     },
   },
 
-  publicPath: '/vuetify-material-dashboard/'
+  publicPath: './'
 }
