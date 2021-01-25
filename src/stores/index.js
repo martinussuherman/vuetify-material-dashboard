@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { oidcStore } from './oidc'
 
 Vue.use(Vuex)
 
@@ -19,5 +20,8 @@ export default new Vuex.Store({
   },
   actions: {
 
+  },
+  modules: {
+    oidcStore: oidcStore,
   },
 })

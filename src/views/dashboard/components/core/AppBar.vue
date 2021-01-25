@@ -106,14 +106,55 @@
       </v-list>
     </v-menu>
 
-    <v-btn
-      class="ml-2"
-      min-width="0"
-      text
-      to="/pages/user"
+    <v-menu
+      bottom
+      left
+      offset-y
+      min-width="200"
+      origin="top right"
+      transition="scale-transition"
     >
-      <v-icon>mdi-account</v-icon>
-    </v-btn>
+      <template v-slot:activator="{ attrs, on }">
+        <v-btn
+          class="ml-2"
+          min-width="0"
+          text
+          v-bind="attrs"
+          v-on="on"
+        >
+          <v-icon>mdi-account</v-icon>
+        </v-btn>
+      </template>
+
+      <v-list
+        :tile="false"
+        nav
+      >
+        <template v-for="(userMenu, i) in userMenus">
+          <v-divider
+            v-if="userMenu.divider"
+            :key="`divider-${i}`"
+            class="mb-2 mt-2"
+          />
+
+          <app-bar-item
+            v-else
+            :key="`item-${i}`"
+            :to="userMenu.to"
+          >
+            <v-list-item-title v-text="userMenu.title" />
+          </app-bar-item>
+        </template>
+
+        <app-bar-item
+          :key="logout"
+        >
+          <v-list-item-title @click="signOutOidc">
+            Log out
+          </v-list-item-title>
+        </app-bar-item>
+      </v-list>
+    </v-menu>
   </v-app-bar>
 </template>
 
@@ -122,7 +163,7 @@
   import { VHover, VListItem } from 'vuetify/lib'
 
   // Utilities
-  import { mapState, mapMutations } from 'vuex'
+  import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 
   export default {
     name: 'DashboardCoreAppBar',
@@ -168,13 +209,20 @@
         'Another Notification',
         'Another one',
       ],
+      userMenus: [
+        { title: 'Profile', to: '/pages/user' },
+        { title: 'Settings' },
+        { divider: true },
+      ],
     }),
 
     computed: {
+      ...mapGetters('oidcStore', ['oidcUser']),
       ...mapState(['drawer']),
     },
 
     methods: {
+      ...mapActions('oidcStore', ['signOutOidc']),
       ...mapMutations({
         setDrawer: 'SET_DRAWER',
       }),
