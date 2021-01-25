@@ -59,17 +59,17 @@ const router = new Router({
           component: () => import('@/views/dashboard/Upgrade'),
         },
         {
-          path: '/oidc-callback',
+          path: 'oidc-callback',
           name: 'OidcCallback',
           component: () => import('@/views/OidcCallback.vue'),
         },
         // {
-        //   path: '/oidc-popup-callback', // Needs to match popupRedirectUri in you oidcSettings
+        //   path: 'oidc-popup-callback', // Needs to match popupRedirectUri in you oidcSettings
         //   name: 'oidcPopupCallback',
         //   component: OidcPopupCallback
         // },
         {
-          path: '/oidc-callback-error', // Needs to match redirect_uri in you oidcSettings
+          path: 'oidc-callback-error', // Needs to match redirect_uri in you oidcSettings
           name: 'oidcCallbackError',
           component: () => import('@/views/OidcCallbackError.vue'),
           meta: {
