@@ -1,4 +1,4 @@
-/* eslint no-console: 0*/
+/* eslint no-console: 0 */
 
 import { vuexOidcCreateStoreModule } from 'vuex-oidc'
 import { oidcSettings } from '@/config/oidc'
