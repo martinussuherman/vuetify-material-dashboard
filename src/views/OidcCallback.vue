@@ -13,7 +13,7 @@
           this.$router.push(redirectPath)
         })
         .catch((err) => {
-          console.error(err)
+          window.console.error(err)
           this.$router.push('/oidc-callback-error') // Handle errors any way you want
         })
     },
