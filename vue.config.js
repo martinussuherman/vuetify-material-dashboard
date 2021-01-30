@@ -15,7 +15,7 @@ module.exports = {
       template: 'public/silent-renew-oidc.html',
       filename: 'silent-renew-oidc.html',
       excludeChunks: ['app'],
-    }
+    },
   },
 
   transpileDependencies: ['vuetify'],
@@ -28,6 +28,4 @@ module.exports = {
       enableInSFC: false,
     },
   },
-
-  publicPath: '/vuetify-material-dashboard/'
 }
