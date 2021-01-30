@@ -147,7 +147,7 @@
         </template>
 
         <app-bar-item
-          :key="logout"
+          key="logout"
         >
           <v-list-item-title @click="signOutOidc">
             Log out
