@@ -28,4 +28,6 @@ module.exports = {
       enableInSFC: false,
     },
   },
+
+  publicPath: '/vuetify-material-dashboard',
 }
