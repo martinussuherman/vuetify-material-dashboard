@@ -21,8 +21,7 @@ import './plugins/vee-validate'
 import vuetify from './plugins/vuetify'
 import i18n from './i18n'
 
-// eslint-disable-next-line no-void
-void (async function () {
+(async function () {
   Vue.config.productionTip = false
   const router = await configureRouter()
   const store = await configureVuexStore()
