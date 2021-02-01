@@ -1,5 +1,5 @@
 export async function getRuntimeOidcConfig () {
-  const runtimeConfig = await fetch('/oidc.json')
+  const runtimeConfig = await fetch('./oidc.json')
   const config = await runtimeConfig.json()
 
   const clientSetting = {
