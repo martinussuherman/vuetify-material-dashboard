@@ -1,27 +1,31 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { oidcStore } from './oidc'
+import { configureVuexOidc } from './oidc'
 
-Vue.use(Vuex)
+export async function configureVuexStore () {
+  Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-    barColor: 'rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)',
-    barImage: 'https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-1.jpg',
-    drawer: null,
-  },
-  mutations: {
-    SET_BAR_IMAGE (state, payload) {
-      state.barImage = payload
+  const store = new Vuex.Store({
+    state: {
+      barColor: 'rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)',
+      barImage: 'https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-1.jpg',
+      drawer: null,
     },
-    SET_DRAWER (state, payload) {
-      state.drawer = payload
+    mutations: {
+      SET_BAR_IMAGE (state, payload) {
+        state.barImage = payload
+      },
+      SET_DRAWER (state, payload) {
+        state.drawer = payload
+      },
     },
-  },
-  actions: {
+    actions: {
 
-  },
-  modules: {
-    oidcStore: oidcStore,
-  },
-})
+    },
+    modules: {
+      oidcStore: await configureVuexOidc(),
+    },
+  })
+
+  return store
+}

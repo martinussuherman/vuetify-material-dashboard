@@ -13,8 +13,8 @@
 
 import Vue from 'vue'
 import App from './App.vue'
-import { configureRouter } from './router-async'
-import { configureVuexStore } from './stores/async'
+import { configureRouter } from './router'
+import { configureVuexStore } from './stores'
 import './plugins/base'
 import './plugins/chartist'
 import './plugins/vee-validate'
