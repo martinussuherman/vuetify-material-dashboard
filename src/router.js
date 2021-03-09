@@ -63,6 +63,9 @@ export async function configureRouter () {
             path: 'oidc-callback',
             name: 'OidcCallback',
             component: () => import('@/views/OidcCallback.vue'),
+            meta: {
+              isOidcCallback: true,
+            },
           },
           // {
           //   path: 'oidc-popup-callback', // Needs to match popupRedirectUri in you oidcSettings
