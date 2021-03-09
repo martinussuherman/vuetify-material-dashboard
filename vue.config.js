@@ -10,11 +10,17 @@ module.exports = {
       filename: 'index.html',
       excludeChunks: ['silent-renew-oidc'],
     },
+    notFound: {
+      entry: 'src/main.js',
+      template: 'public/404.html',
+      filename: '404.html',
+      excludeChunks: ['silent-renew-oidc'],
+    },
     silentrenewoidc: {
       entry: 'src/silent-renew-oidc.js',
       template: 'public/silent-renew-oidc.html',
       filename: 'silent-renew-oidc.html',
-      excludeChunks: ['app'],
+      excludeChunks: ['app', 'notFound'],
     },
   },
 
@@ -29,5 +35,6 @@ module.exports = {
     },
   },
 
+  // publicPath: '/',
   publicPath: '/vuetify-material-dashboard',
 }
