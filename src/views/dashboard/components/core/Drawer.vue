@@ -11,7 +11,7 @@
     width="260"
     v-bind="$attrs"
   >
-    <template v-slot:img="props">
+    <template #img="props">
       <v-img
         :gradient="`to bottom, ${barColor}`"
         v-bind="props"
@@ -76,7 +76,7 @@
       <div />
     </v-list>
 
-    <template v-slot:append>
+    <template #append>
       <base-item
         :item="{
           title: $t('upgrade'),

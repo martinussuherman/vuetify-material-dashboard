@@ -10,7 +10,7 @@
         md="8"
       >
         <base-material-card color="primary">
-          <template v-slot:heading>
+          <template #heading>
             <div class="display-2 font-weight-light">
               Vuetify Material Dashboard
             </div>

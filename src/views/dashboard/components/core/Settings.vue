@@ -40,7 +40,7 @@
               :key="color"
               :value="color"
             >
-              <template v-slot="{ active, toggle }">
+              <template #default="{ active, toggle }">
                 <v-avatar
                   :class="active && 'v-settings__item--active'"
                   :color="color"
@@ -110,7 +110,7 @@
               :value="image"
               class="mx-1"
             >
-              <template v-slot="{ active, toggle }">
+              <template #default="{ active, toggle }">
                 <v-sheet
                   :class="active && 'v-settings__item--active'"
                   class="d-inline-block v-settings__item"
