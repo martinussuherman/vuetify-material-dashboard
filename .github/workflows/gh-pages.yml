@@ -1,26 +1,14 @@
 name: Publish to Github Pages
-
 on: [workflow_dispatch]
-
 jobs:
-  deploy:
+  build_vue:
     runs-on: ubuntu-latest
-
+    name: Build Vue
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 6.0.2
-          run_install: true
-
-      - name: Build 
-        run: pnpm run build
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+    - uses: actions/checkout@v2
+    - id: Build-Vue
+      uses: xRealNeon/VuePagesAction@1.0.0
+      with:
+        username: 'martinussuherman'
+        reponame: 'vuetify-material-dashboard'
+        token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
